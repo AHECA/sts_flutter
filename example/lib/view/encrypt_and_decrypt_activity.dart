@@ -26,7 +26,7 @@ class _EncryptAndDecryptState extends State<EncryptAndDecryptActivity> {
       decoration: InputDecoration(labelText: "请输入加密原文"),
       style: TextStyle(fontSize: App.tffTextSize),
       maxLength: 40,
-      keyboardType: TextInputType.phone,
+      keyboardType: TextInputType.text,
       onChanged: (value) {
         encryptDataStr = value;
       },
