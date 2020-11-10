@@ -1,0 +1,47 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_plugin_qrcode (0.0.1):
+    - Flutter
+  - fluttertoast (0.0.2):
+    - Flutter
+    - Toast
+  - shared_preferences (0.0.1):
+    - Flutter
+  - sts_flutter (0.0.1):
+    - Flutter
+  - Toast (4.0.0)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_plugin_qrcode (from `.symlinks/plugins/flutter_plugin_qrcode/ios`)
+  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
+  - sts_flutter (from `.symlinks/plugins/sts_flutter/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Toast
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_plugin_qrcode:
+    :path: ".symlinks/plugins/flutter_plugin_qrcode/ios"
+  fluttertoast:
+    :path: ".symlinks/plugins/fluttertoast/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
+  sts_flutter:
+    :path: ".symlinks/plugins/sts_flutter/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_plugin_qrcode: 84b540901693d41dd5ff75a692391b58bc082895
+  fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
+  sts_flutter: 23f31fa97148f0f879fea6928d32e440e18c020e
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+
+PODFILE CHECKSUM: 1777a4c63a19d4751e5344ace3c1d61d7cb14372
+
+COCOAPODS: 1.9.3
