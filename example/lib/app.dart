@@ -12,10 +12,7 @@ class App {
       centerTitle: true,
       title: Container(
         padding: EdgeInsets.all(5.0),
-        child: Text(
-          title,
-          style: TextStyle(color: Colors.white, fontSize: appBarTitleSize),
-        ),
+        child: Text(title, style: TextStyle(color: Colors.white, fontSize: appBarTitleSize)),
       ),
     );
   }
