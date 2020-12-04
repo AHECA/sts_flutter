@@ -53,9 +53,7 @@ class CertInfoActivity extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.all(14.0),
         decoration: BoxDecoration(
-          color: Theme
-              .of(context)
-              .disabledColor,
+          color: Theme.of(context).disabledColor,
           borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
         ),
         child: Text(
@@ -66,11 +64,7 @@ class CertInfoActivity extends StatelessWidget {
 
       Map<String, dynamic> certInfo = certInfoJson;
       if (titleKey.length != 0) {
-        if (certInfoJson.containsKey(titleKey)) {
-          certInfo = certInfoJson[titleKey];
-        } else {
-          certInfo = null;
-        }
+        certInfo = certInfoJson[titleKey] ?? "";
       }
       for (var j = 0; j < subtitles.length; j++) {
         var subtitle = subtitles[j];
@@ -95,9 +89,7 @@ class CertInfoActivity extends StatelessWidget {
               ),
               Text(
                 value,
-                style: TextStyle(color: Theme
-                    .of(context)
-                    .hintColor, fontSize: App.littleTitleSize),
+                style: TextStyle(color: Theme.of(context).hintColor, fontSize: App.littleTitleSize),
               )
             ],
           ),
@@ -106,9 +98,7 @@ class CertInfoActivity extends StatelessWidget {
         /// 卡片内容之间的分割线
         if (j < subtitles.length - 1)
           cardColumnList.add(Divider(
-            color: Theme
-                .of(context)
-                .dividerColor,
+            color: Theme.of(context).dividerColor,
             height: 1.0,
           ));
       }
