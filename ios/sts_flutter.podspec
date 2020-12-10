@@ -13,6 +13,8 @@ AHCA STS Flutter plugin.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
+  s.ios.vendored_frameworks = 'Frameworks/AnXinSDK.framework'
+  s.vendored_frameworks = 'AnXinSDK.framework'
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'

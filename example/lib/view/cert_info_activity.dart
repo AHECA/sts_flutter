@@ -38,6 +38,8 @@ class CertInfoActivity extends StatelessWidget {
 
     List<Widget> cards = [];
 
+    print("flutter层：${json.encode(stsCertInfo)}");
+
     Map<String, dynamic> certInfoJson = json.decode(json.encode(stsCertInfo));
 
     for (var i = 0; i < titles.length; i++) {
@@ -66,6 +68,7 @@ class CertInfoActivity extends StatelessWidget {
       if (titleKey.length != 0) {
         certInfo = certInfoJson[titleKey] ?? "";
       }
+      print("certInfo：$certInfo");
       for (var j = 0; j < subtitles.length; j++) {
         var subtitle = subtitles[j];
         var subtitleKey = subtitleKeys[j];
@@ -75,6 +78,7 @@ class CertInfoActivity extends StatelessWidget {
         } else {
           value = "";
         }
+        print("value：$value");
 
         /// 卡片内容
         cardColumnList.add(Container(

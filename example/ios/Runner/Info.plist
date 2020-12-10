@@ -22,6 +22,19 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>是否允许次app在生物认证、二维码扫描时使用您的相机权限</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>是否允许此app获取FaceID或者指纹权限？</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>是否允许次app在获取二维码时访问你的媒体库</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>是否允许次app在获取二维码时访问你的媒体库</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
