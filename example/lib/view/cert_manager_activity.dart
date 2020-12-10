@@ -27,6 +27,7 @@ class _CertManagerState extends State<CertManagerActivity> {
     super.initState();
     this.isChecked = widget.isChecked;
     this.presenter = CertManagerPresenter();
+    init();
   }
 
   void init() async {
