@@ -64,25 +64,25 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
     override fun onMethodCall(methodCall: MethodCall, channelResult: MethodChannel.Result) {
         when (methodCall.method) {
             "init" -> {
-                val baseUrl = methodCall.argument<String>("baseUrl")!!
-                val stsAppKey = methodCall.argument<String>("stsAppKey")!!
-                val stsSecretKey = methodCall.argument<String>("stsSecretKey")!!
+                val baseUrl = methodCall.argument<String>("baseUrl") ?: ""
+                val stsAppKey = methodCall.argument<String>("stsAppKey") ?: ""
+                val stsSecretKey = methodCall.argument<String>("stsSecretKey") ?: ""
                 STShield.init(activity!!, baseUrl, stsAppKey, stsSecretKey)
                 channelResult.success("")
             }
             "initUseId" -> {
-                val useId = methodCall.argument<String>("useId")!!
+                val useId = methodCall.argument<String>("useId") ?: ""
                 STShield.initUseId(activity!!, useId)
                 channelResult.success("")
             }
             "initFace" -> {
-                val id = methodCall.argument<String>("id")!!
-                val fileName = methodCall.argument<String>("fileName")!!
+                val id = methodCall.argument<String>("id") ?: ""
+                val fileName = methodCall.argument<String>("fileName") ?: ""
                 STShield.initFace(activity!!, id, fileName)
                 channelResult.success("")
             }
             "initThemeColor" -> {
-                val color = methodCall.argument<Int>("color")!!
+                val color = methodCall.argument<Int>("color") ?: 0
                 STShield.initThemeColor(activity!!, ContextCompat.getColor(activity!!, color))
                 channelResult.success("")
             }
@@ -101,7 +101,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 channelResult.success(Gson().toJson(STShield.clearCert(activity!!)))
             }
             "applyPersonalCert" -> {
-                val stsUserInfo = methodCall.argument<String>("stsUserInfo")!!
+                val stsUserInfo = methodCall.argument<String>("stsUserInfo") ?: ""
                 val fromJson = Gson().fromJson(stsUserInfo, StsUserInfo::class.java)
 
                 STShield.applyPersonalCert(activity!!, fromJson) {
@@ -109,7 +109,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "applyCompanyCert" -> {
-                val stsCompanyInfo = methodCall.argument<String>("stsCompanyInfo")!!
+                val stsCompanyInfo = methodCall.argument<String>("stsCompanyInfo") ?: ""
                 val fromJson = Gson().fromJson(stsCompanyInfo, StsCompanyInfo::class.java)
 
                 STShield.applyCompanyCert(activity!!, fromJson) {
@@ -122,13 +122,13 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "untieEquipment" -> {
-                val qrData = methodCall.argument<String>("qrData")!!
+                val qrData = methodCall.argument<String>("qrData") ?: ""
                 STShield.untieEquipment(activity!!, qrData) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "updatePersonalCert" -> {
-                val stsUserInfo = methodCall.argument<String>("stsUserInfo")!!
+                val stsUserInfo = methodCall.argument<String>("stsUserInfo") ?: ""
                 val fromJson = Gson().fromJson(stsUserInfo, StsUserInfo::class.java)
 
                 STShield.updatePersonalCert(activity!!, fromJson) {
@@ -136,7 +136,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "updateCompanyCert" -> {
-                val stsCompanyInfo = methodCall.argument<String>("stsCompanyInfo")!!
+                val stsCompanyInfo = methodCall.argument<String>("stsCompanyInfo") ?: ""
                 val fromJson = Gson().fromJson(stsCompanyInfo, StsCompanyInfo::class.java)
 
                 STShield.updateCompanyCert(activity!!, fromJson) {
@@ -144,7 +144,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "resetPersonalPIN" -> {
-                val stsUserInfo = methodCall.argument<String>("stsUserInfo")!!
+                val stsUserInfo = methodCall.argument<String>("stsUserInfo") ?: ""
                 val fromJson = Gson().fromJson(stsUserInfo, StsUserInfo::class.java)
 
                 STShield.resetPersonalPIN(activity!!, fromJson) {
@@ -152,7 +152,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "resetCompanyPIN" -> {
-                val stsCompanyInfo = methodCall.argument<String>("stsCompanyInfo")!!
+                val stsCompanyInfo = methodCall.argument<String>("stsCompanyInfo") ?: ""
                 val fromJson = Gson().fromJson(stsCompanyInfo, StsCompanyInfo::class.java)
 
                 STShield.resetCompanyPIN(activity!!, fromJson) {
@@ -165,7 +165,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "scanLogin" -> {
-                val stsScanInfo = methodCall.argument<String>("stsScanInfo")!!
+                val stsScanInfo = methodCall.argument<String>("stsScanInfo") ?: ""
                 val fromJson = Gson().fromJson(stsScanInfo, StsScanInfo::class.java)
 
                 STShield.scanLogin(activity!!, fromJson) {
@@ -173,7 +173,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "scanSign" -> {
-                val stsScanInfo = methodCall.argument<String>("stsScanInfo")!!
+                val stsScanInfo = methodCall.argument<String>("stsScanInfo") ?: ""
                 val fromJson = Gson().fromJson(stsScanInfo, StsScanInfo::class.java)
 
                 STShield.scanSign(activity!!, fromJson) {
@@ -181,63 +181,63 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "certLogin" -> {
-                val data = methodCall.argument<String>("data")!!
-                val dataFormat = methodCall.argument<String>("dataFormat")!!
-                val dataType = methodCall.argument<String>("dataType")!!
-                val pn = methodCall.argument<String>("pn")!!
+                val data = methodCall.argument<String>("data") ?: ""
+                val dataFormat = methodCall.argument<String>("dataFormat") ?: ""
+                val dataType = methodCall.argument<String>("dataType") ?: ""
+                val pn = methodCall.argument<String>("pn") ?: ""
 
                 STShield.certLogin(activity!!, data, dataFormat, dataType, pn) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "certSeal" -> {
-                val pn = methodCall.argument<String>("pn")!!
+                val pn = methodCall.argument<String>("pn") ?: ""
 
                 STShield.certSeal(activity!!, pn) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "certSign" -> {
-                val data = methodCall.argument<String>("data")!!
-                val dataFormat = methodCall.argument<String>("dataFormat")!!
-                val dataType = methodCall.argument<String>("dataType")!!
-                val pn = methodCall.argument<String>("pn")!!
+                val data = methodCall.argument<String>("data") ?: ""
+                val dataFormat = methodCall.argument<String>("dataFormat") ?: ""
+                val dataType = methodCall.argument<String>("dataType") ?: ""
+                val pn = methodCall.argument<String>("pn") ?: ""
 
                 STShield.certSign(activity!!, data, dataFormat, dataType, pn) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "certVerifySign" -> {
-                val data = methodCall.argument<String>("data")!!
-                val dataFormat = methodCall.argument<String>("dataFormat")!!
-                val signData = methodCall.argument<String>("signData")!!
-                val dataType = methodCall.argument<String>("dataType")!!
+                val data = methodCall.argument<String>("data") ?: ""
+                val dataFormat = methodCall.argument<String>("dataFormat") ?: ""
+                val signData = methodCall.argument<String>("signData") ?: ""
+                val dataType = methodCall.argument<String>("dataType") ?: ""
 
                 STShield.certVerifySign(activity!!, data, dataFormat, signData, dataType) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "certEncrypt" -> {
-                val data = methodCall.argument<String>("data")!!
-                val dataFormat = methodCall.argument<String>("dataFormat")!!
-                val dataType = methodCall.argument<String>("dataType")!!
+                val data = methodCall.argument<String>("data") ?: ""
+                val dataFormat = methodCall.argument<String>("dataFormat") ?: ""
+                val dataType = methodCall.argument<String>("dataType") ?: ""
 
                 STShield.certEncrypt(activity!!, data, dataFormat, dataType) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "certDecrypt" -> {
-                val data = methodCall.argument<String>("data")!!
-                val dataFormat = methodCall.argument<String>("dataFormat")!!
-                val dataType = methodCall.argument<String>("dataType")!!
-                val pn = methodCall.argument<String>("pn")!!
+                val data = methodCall.argument<String>("data") ?: ""
+                val dataFormat = methodCall.argument<String>("dataFormat") ?: ""
+                val dataType = methodCall.argument<String>("dataType") ?: ""
+                val pn = methodCall.argument<String>("pn") ?: ""
 
                 STShield.certDecrypt(activity!!, data, dataFormat, dataType, pn) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "changeCertStatus" -> {
-                val statusType = methodCall.argument<Int>("statusType")!!
+                val statusType = methodCall.argument<Int>("statusType") ?: STShield.CERT_STATUS_TYPE_UNFREEZE
 
                 STShield.changeCertStatus(activity!!, statusType) {
                     channelResult.success(Gson().toJson(it))
@@ -249,36 +249,36 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "setPKCacheTime" -> {
-                val pn = methodCall.argument<String>("pn")!!
+                val pn = methodCall.argument<String>("pn") ?: ""
 
                 STShield.setPKCacheTime(activity!!, pn) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "clearPKCacheTime" -> {
-                val pn = methodCall.argument<String>("pn")!!
+                val pn = methodCall.argument<String>("pn") ?: ""
 
                 STShield.clearPKCacheTime(activity!!, pn) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "getCert" -> {
-                val certType = methodCall.argument<Int>("certType")!!
+                val certType = methodCall.argument<Int>("certType") ?: STShield.CERT_TYPE_SIGNCERT
 
                 STShield.getCert(activity!!, certType) {
                     channelResult.success(Gson().toJson(it))
                 }
             }
             "getLocalCert" -> {
-                val certType = methodCall.argument<Int>("certType")!!
+                val certType = methodCall.argument<Int>("certType") ?: STShield.CERT_TYPE_SIGNCERT
 
                 val localCert: GetCertResult = STShield.getLocalCert(activity!!, certType)
                 channelResult.success(Gson().toJson(localCert))
             }
             "downloadCert" -> {
-                val phoneNum = methodCall.argument<String>("phoneNum")!!
-                val departmentNo = methodCall.argument<String>("departmentNo")!!
-                val certType = methodCall.argument<Int>("certType")!!
+                val phoneNum = methodCall.argument<String>("phoneNum") ?: ""
+                val departmentNo = methodCall.argument<String>("departmentNo") ?: ""
+                val certType = methodCall.argument<Int>("certType") ?: STShield.CERT_TYPE_SIGNCERT
 
                 STShield.downloadCert(activity!!, phoneNum, departmentNo, certType) {
                     channelResult.success(Gson().toJson(it))
@@ -298,7 +298,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 }
             }
             "setSignImgBase64Str" -> {
-                val imgBase64 = methodCall.argument<String>("imgBase64")!!
+                val imgBase64 = methodCall.argument<String>("imgBase64") ?: ""
 
                 STShield.setSignImgBase64Str(activity!!, imgBase64) {
                     channelResult.success(Gson().toJson(it))
@@ -329,7 +329,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
                 channelResult.success(STShield.getFingerprintStatus(activity!!))
             }
             "openFingerprint" -> {
-                val open = methodCall.argument<Boolean>("open")!!
+                val open = methodCall.argument<Boolean>("open") ?: false
 
                 STShield.openFingerprint(activity!!, open) {
                     channelResult.success(Gson().toJson(it))
