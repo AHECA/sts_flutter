@@ -16,7 +16,6 @@
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		F1FD69F325807F23007755E4 /* AXShieldBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F1FD69EE25807F23007755E4 /* AXShieldBundle.bundle */; };
-		F1FD69F425807F23007755E4 /* idl-license.face-ios in Resources */ = {isa = PBXBuildFile; fileRef = F1FD69F025807F23007755E4 /* idl-license.face-ios */; };
 		F1FD69F525807F23007755E4 /* com.baidu.idl.face.model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F1FD69F125807F23007755E4 /* com.baidu.idl.face.model.bundle */; };
 		F1FD69F625807F23007755E4 /* com.baidu.idl.face.faceSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F1FD69F225807F23007755E4 /* com.baidu.idl.face.faceSDK.bundle */; };
 /* End PBXBuildFile section */
@@ -54,7 +53,6 @@
 		DB589B9B16578E01E61E1048 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		F1FD69EE25807F23007755E4 /* AXShieldBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AXShieldBundle.bundle; sourceTree = "<group>"; };
 		F1FD69EF25807F23007755E4 /* FaceParameterConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceParameterConfig.h; sourceTree = "<group>"; };
-		F1FD69F025807F23007755E4 /* idl-license.face-ios */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "idl-license.face-ios"; sourceTree = "<group>"; };
 		F1FD69F125807F23007755E4 /* com.baidu.idl.face.model.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = com.baidu.idl.face.model.bundle; sourceTree = "<group>"; };
 		F1FD69F225807F23007755E4 /* com.baidu.idl.face.faceSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = com.baidu.idl.face.faceSDK.bundle; sourceTree = "<group>"; };
 		FF05CE8AF10E5A09EF5C6D0B /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,7 +148,6 @@
 			children = (
 				F1FD69EE25807F23007755E4 /* AXShieldBundle.bundle */,
 				F1FD69EF25807F23007755E4 /* FaceParameterConfig.h */,
-				F1FD69F025807F23007755E4 /* idl-license.face-ios */,
 				F1FD69F125807F23007755E4 /* com.baidu.idl.face.model.bundle */,
 				F1FD69F225807F23007755E4 /* com.baidu.idl.face.faceSDK.bundle */,
 			);
@@ -223,7 +220,6 @@
 				F1FD69F525807F23007755E4 /* com.baidu.idl.face.model.bundle in Resources */,
 				F1FD69F625807F23007755E4 /* com.baidu.idl.face.faceSDK.bundle in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
-				F1FD69F425807F23007755E4 /* idl-license.face-ios in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				F1FD69F325807F23007755E4 /* AXShieldBundle.bundle in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
@@ -376,7 +372,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -460,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -509,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
