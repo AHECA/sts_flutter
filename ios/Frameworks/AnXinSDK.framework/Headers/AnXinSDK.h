@@ -22,7 +22,28 @@
 #import<AnXinSDK/FaceSDKManager.h>
 #import<AnXinSDK/IDLFaceLivenessManager.h>
 #import<AnXinSDK/VideoCaptureDevice.h>
+/*
+#import <AnXinSDK/PKCacheResult.h>
+#import <AnXinSDK/CommonResult.h>
+#import <AnXinSDK/GetCertResult.h>
+#import <AnXinSDK/CertLoginResult.h>
+#import <AnXinSDK/SignImgResult.h>
+#import <AnXinSDK/CertSignResult.h>
+#import <AnXinSDK/ApplyCertResult.h>
+#import <AnXinSDK/CertDecryptResult.h>
+#import <AnXinSDK/CertEncryptResult.h>
+#import <AnXinSDK/CertSignResult.h>
+#import <AnXinSDK/CertSealResult.h>
+#import <AnXinSDK/GetDepartmentNoResult.h>
 
+#import <AnXinSDK/StsCertInfo.h>
+#import <AnXinSDK/StsUserInfo.h>
+#import <AnXinSDK/StsCompanyInfo.h>
+#import <AnXinSDK/StsDepartment.h>
+#import <AnXinSDK/IssuerDNBean.h>
+#import <AnXinSDK/SubjectDNBean.h>
+#import <AnXinSDK/SubjectEXTBean.h>
+*/
 //! Project version number for AnXinSDK.
 FOUNDATION_EXPORT double AnXinSDKVersionNumber;
 

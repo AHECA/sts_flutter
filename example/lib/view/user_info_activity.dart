@@ -67,8 +67,7 @@ class _UserInfoActivityState extends State<UserInfoActivity> {
       onPressed: () => _onBtnClick(context),
     );
 
-    var column = Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+    var listView = ListView(
       children: <Widget>[
         tffIdCardName,
         tffIdCardNum,
@@ -85,7 +84,7 @@ class _UserInfoActivityState extends State<UserInfoActivity> {
       appBar: App.getAppBar("输入信息"),
       body: Container(
         padding: EdgeInsets.all(20.0),
-        child: column,
+        child: listView,
       ),
     );
   }

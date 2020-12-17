@@ -1,6 +1,6 @@
 name: sts_flutter
 description: AHCA STS Flutter plugin. 基于AHCA手机盾原生SDK封装的Flutter插件.
-version: 0.0.13
+version: 0.0.14
 homepage: https://github.com/AHECA/sts_flutter
 
 environment:

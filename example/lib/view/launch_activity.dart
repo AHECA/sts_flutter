@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_plugin_qrcode/flutter_plugin_qrcode.dart';
@@ -38,7 +39,11 @@ class _MyAppState extends State<LaunchActivity> {
   void initState() {
     super.initState();
     StsFlutter.init(ConstantTable.stsServiceURL, ConstantTable.stsAppKey, ConstantTable.stsSecretKey);
-    StsFlutter.initFace(ConstantTable.Face_LicenseID, ConstantTable.Face_LicenseName);
+    if (Platform.isIOS) {
+      StsFlutter.initFace(ConstantTable.Face_LicenseID_iOS, ConstantTable.Face_LicenseName_iOS);
+    } else if (Platform.isAndroid) {
+      StsFlutter.initFace(ConstantTable.Face_LicenseID_Android, ConstantTable.Face_LicenseName_Android);
+    }
   }
 
   @override

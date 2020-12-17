@@ -1,6 +1,5 @@
 #import "StsFlutterPlugin.h"
 #import <AnXinSDK/AnXinSDK.h>
-#import "FaceParameterConfig.h"
 #import "MJExtension.h"
 #import "ApplyCertModel.h"
 #import "ApplyCertResult.h"
@@ -90,12 +89,10 @@
         } error:^(NSError *error) {
             
         }];
-        
     }
     
     else if ([@"clearCert" isEqualToString:call.method])  //注销清除本地证书
     {
-        
         BOOL isBool =  [[AXUserInfo sharedInstance] clearCertinfoWithUserID];
         NSNumber *Bool = [NSNumber numberWithInt:isBool];
         CommonResult *model = [[CommonResult alloc]init];
@@ -110,7 +107,6 @@
     
     else if ([@"applyPersonalCert" isEqualToString:call.method]) //申请个人证书
     {
-        
         NSString  * stsUserInfo = call.arguments[@"stsUserInfo"];
         NSDictionary *stsUserInfo_dic = [stsUserInfo  mj_JSONObject];
         
@@ -145,8 +141,7 @@
             card = SoldierIDCard;
             
         }
-        
-        
+
         [[AXUserInfo sharedInstance]ApplyWithPersonUser_name:userName card_num:cardNum phone_num:phoneNum card_type:card user_city:userCity user_email:userEmail dept_no:departmentNo cert_ext2:certExt2 cert_ext3:certExt3 cert_ext4:certExt4 success:^(id response) {
             
             ApplyCertModel *model = [ApplyCertModel mj_objectWithKeyValues:response];
@@ -169,10 +164,7 @@
             result(jsonStr);
             
         } err:^(NSError *error) {
-            
-            
         }];
-        
     }
     else if ([@"applyCompanyCert" isEqualToString:call.method])  //企业申请证书
     {
@@ -196,7 +188,6 @@
     
     else if ([@"updatePersonalCert" isEqualToString:call.method])   //更新个人证书
     {
-        
         NSString * stsUserInfo = call.arguments[@"stsUserInfo"];      // NullAble
         NSDictionary *stsUserInfo_dic = [stsUserInfo  mj_JSONObject];
         
@@ -223,7 +214,6 @@
     
     else if ([@"updateCompanyCert" isEqualToString:call.method]) //更新企业证书
     {
-        
         NSString * stsCompanyInfo = call.arguments[@"stsCompanyInfo"];     // NullAble
         NSDictionary *stsUserInfo_dic = [stsCompanyInfo  mj_JSONObject];
         
@@ -247,13 +237,10 @@
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        
     }
     
     else if ([@"resetPersonalPIN" isEqualToString:call.method])  //个人 重置PIN码
     {
-        
-        
         NSString * stsUserInfo = call.arguments[@"stsUserInfo"];     // NullAble
         NSDictionary *stsUserInfo_dic = [stsUserInfo  mj_JSONObject];
         
@@ -296,7 +283,6 @@
     
     else if ([@"resetCompanyPIN" isEqualToString:call.method])   // 企业 重置PIN码
     {
-        
         NSString * stsCompanyInfo = call.arguments[@"stsCompanyInfo"];     // NullAble
         NSDictionary *stsUserInfo_dic = [stsCompanyInfo  mj_JSONObject];
         
@@ -338,7 +324,6 @@
     
     else if ([@"modifyPIN" isEqualToString:call.method]) //修改  PIN
     {
-        
         [[AXUserInfo sharedInstance]ChangePasswordWithsuccess:^(id response) {
             
             NSDictionary *dic = (NSDictionary *)response;
@@ -396,8 +381,7 @@
                 datatype = DataBase64;
                 break;
         }
-        
-        
+
         [[AXUserInfo sharedInstance] PassLoginMobileWithdata:data pn:pn data_type:datatype data_Format:dataFormat success:^(id response) {
             
             NSDictionary *dic = (NSDictionary *)response;
@@ -415,15 +399,11 @@
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        
-        
     }
     else if ([@"certSeal" isEqualToString:call.method])  //证书签章
     {
-        
         NSString * pn = call.arguments[@"pn"];
         [[AXUserInfo sharedInstance] passCertSealAndPicOrSignWithpn:pn success:^(id response) {
-            
             
             NSDictionary *dic = (NSDictionary *)response;
             CertSealResult *model = [[CertSealResult alloc]init];
@@ -441,7 +421,6 @@
     }
     else if ([@"certSign" isEqualToString:call.method])   //原文签名
     {
-        
         NSString * data = call.arguments[@"data"];
         NSString * dataFormat = call.arguments[@"dataFormat"];
         NSString * dataType = call.arguments[@"dataType"];
@@ -469,7 +448,6 @@
         
         [[AXUserInfo sharedInstance] passSignWithdata:data pn:pn data_type:datatype data_Format:dataFormat success:^(id response) {
             
-            
             NSDictionary *dic = (NSDictionary *)response;
             CertSignResult *model = [[CertSignResult alloc]init];
             
@@ -489,7 +467,6 @@
     
     else if ([@"certVerifySign" isEqualToString:call.method]) //证书验签
     {
-        
         NSString * data = call.arguments[@"data"];
         NSString * dataFormat = call.arguments[@"dataFormat"];
         NSString * signData = call.arguments[@"signData"];
@@ -517,7 +494,6 @@
         
         [[AXUserInfo sharedInstance] VerifyWithdata:data sign_data:signData data_type:datatype data_Format:dataFormat success:^(id response) {
             
-            
             NSDictionary *dic = (NSDictionary *)response;
             CommonResult *model = [[CommonResult alloc]init];
             
@@ -530,12 +506,10 @@
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        
     }
     
     else if ([@"certEncrypt" isEqualToString:call.method]) //证书加密
     {
-        
         NSString * data = call.arguments[@"data"];
         NSString * dataFormat = call.arguments[@"dataFormat"];
         NSString * dataType = call.arguments[@"dataType"];
@@ -560,8 +534,7 @@
                 break;
         }
         [[AXUserInfo sharedInstance] EncryptWithdata:data data_type:datatype data_Format:dataFormat  success:^(id response) {
-            
-            
+
             NSDictionary *dic = (NSDictionary *)response;
             CertEncryptResult *model = [[CertEncryptResult alloc]init];
             
@@ -579,7 +552,6 @@
     
     else if ([@"certDecrypt" isEqualToString:call.method])  //证书解密
     {
-        
         NSString * data = call.arguments[@"data"];
         NSString * dataFormat = call.arguments[@"dataFormat"];
         NSString * dataType = call.arguments[@"dataType"];
@@ -624,7 +596,6 @@
     
     else if ([@"changeCertStatus" isEqualToString:call.method])  //证书状态
     {
-        
         NSNumber * statusTypeN = call.arguments[@"statusType"];
         int statusType = [statusTypeN intValue];
         
@@ -640,9 +611,7 @@
                 updatetype = Revoke;
                 break;
         }
-        
         [[AXUserInfo sharedInstance] CertStatusUpdateWithupdate_type:updatetype success:^(id response) {
-            
             NSDictionary *dic = (NSDictionary *)response;
             CommonResult *model = [[CommonResult alloc]init];
             
@@ -656,12 +625,10 @@
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        
     }
     
     else if ([@"postponeCert" isEqualToString:call.method])  //延期证书
     {
-        
         [[AXUserInfo sharedInstance] certPostponeWithsuccess:^(id response) {
             
             NSDictionary *dic = (NSDictionary *)response;
@@ -676,12 +643,10 @@
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        
     }
     
     else if ([@"setPKCacheTime" isEqualToString:call.method])  //设置缓存密钥时间
     {
-        
         NSString * pn = call.arguments[@"pn"];
         [[AXUserInfo sharedInstance]passCachePriKeyWithpn:pn success:^(id response) {
             
@@ -694,16 +659,13 @@
             
             NSString *jsonString = [model mj_JSONString];
             result(jsonString);
-            
         } error:^(NSError *error) {
             NSLog(@"%@",error);
-            
         }];
     }
     
     else if ([@"clearPKCacheTime" isEqualToString:call.method])  //清除密钥缓存时间
     {
-        
         NSString * pn = call.arguments[@"pn"];
         [[AXUserInfo sharedInstance]CancleCachePriKeyWithpn:pn success:^(id response) {
             
@@ -719,20 +681,16 @@
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        
     }
     
     else if ([@"getCert" isEqualToString:call.method])  //获取证书信息 从服务器获取
     {
-        
         NSNumber * certTypeN = call.arguments[@"certType"];
         int certType = [certTypeN intValue];
         
         [[AXUserInfo sharedInstance] QueryCertInfoWithsuccess:^(id response) {
-            
             //判读从服务器获取重要的字段信息为空，走本地获取信息字段
             if (![[response objectForKey:@"encCert"] isEqualToString:@""]&&[[response objectForKey:@"signCert"] isEqualToString:@""]) {
-                
                 NSDictionary *dic = (NSDictionary *)response;
                 ApplyCertModel *model = [ApplyCertModel mj_objectWithKeyValues:dic];
                 GetCertResult *modleCart = [[GetCertResult alloc]init];
@@ -757,15 +715,11 @@
                 modelEXT.certExt4 = @"";
                 modelEXT.certExt9 = @"";
                 modleCart.stsCertInfo.subjectEXT = modelEXT;
-                
-                
-                
+
                 NSString *jsonString = [modleCart mj_JSONString];
                 
                 result(jsonString);
-                
             }else{
-                
                 NSDictionary *dic = [[AXUserInfo sharedInstance] GetCertificateInformation];
                 ApplyCertModel *model = [ApplyCertModel mj_objectWithKeyValues:dic];
                 
@@ -792,20 +746,13 @@
                 modelEXT.certExt4 = @"";
                 modelEXT.certExt9 = @"";
                 modleCart.stsCertInfo.subjectEXT = modelEXT;
-                
-                
-                
+
                 NSString *jsonString = [modleCart mj_JSONString];
                 result(jsonString);
-                
             }
-            
         } error:^(NSError *error) {
             NSLog(@"%@", error);
-            
         }];
-        
-        
     }
     else if ([@"getLocalCert" isEqualToString:call.method])   //获取本地沙盒证书数据
     {
@@ -837,13 +784,9 @@
         modelEXT.certExt4 = @"";
         modelEXT.certExt9 = @"";
         modleCart.stsCertInfo.subjectEXT = modelEXT;
-        
-        
-        
+
         NSString *jsonString = [modleCart mj_JSONString];
         result(jsonString);
-        
-        
     }
     else if ([@"downloadCert" isEqualToString:call.method])    //预支证书
     {
@@ -853,7 +796,6 @@
         int certType = [certTypeN intValue];
         
         [[AXUserInfo sharedInstance]GetAdvanceDownloadCertificatewhitdeptNo:departmentNo Success:^(id response) {
-            
             ApplyCertModel *model = [ApplyCertModel mj_objectWithKeyValues:response];
             
             GetCertResult *modleCart = [[GetCertResult alloc]init];
@@ -879,17 +821,13 @@
             
             NSString *jsonString = [modleCart mj_JSONString];
             result(jsonString); // GetCertResult => JsonString
-            
         }];
-        
     }
     
     else if ([@"getDepartmentNo" isEqualToString:call.method])  //单位编号
     {
-        
         [[AXUserInfo sharedInstance] GetDeptInfoWithCompletion:^(id response) {
             if ([[response objectForKey:@"rtnCode"] isEqualToString:@"1"]) {
-                
                 NSDictionary *dic = (NSDictionary *)response;
                 GetDepartmentNoResult *model = [[GetDepartmentNoResult alloc]init];
                 model.resultCode = [[dic objectForKey:@"rtnCode"] intValue];
@@ -898,9 +836,7 @@
                 
                 NSString *jsonString = [model mj_JSONString];
                 result(jsonString);  // GetDepartmentNoResult => JsonString
-                
             }
-            
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
@@ -910,9 +846,7 @@
     {
         // NSString * stsSignImgSetting = call.arguments[@"stsSignImgSetting"];// NullAble
         [[AXUserInfo sharedInstance] ReturnServerSignatureImageWithsuccess:^(id response) {
-            
             if ([[response objectForKey:@"rtnCode"] isEqualToString:@"1"]) {
-                
                 NSDictionary *dic = (NSDictionary *)response;
                 SignImgResult *model = [[SignImgResult alloc]init];
                 model.resultCode = [[dic objectForKey:@"rtnCode"] intValue];
@@ -923,21 +857,16 @@
                 NSString *jsonString = [model mj_JSONString];
                 result(jsonString);   // SignImgResult => JsonString
             }
-            
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        
     }
     
     else if ([@"setSignImgBase64Str" isEqualToString:call.method]) //将图片base64数据保存服务器
     {
         NSString * imgBase64 = call.arguments[@"imgBase64"];
         [[AXUserInfo sharedInstance] passCertSignAndPicOrSignWithData_base64:imgBase64 success:^(id response) {
-            
-            
             if ([[response objectForKey:@"rtnCode"] isEqualToString:@"1"]) {
-                
                 NSDictionary *dic = (NSDictionary *)response;
                 SignImgResult *model = [[SignImgResult alloc]init];
                 model.resultCode = [[dic objectForKey:@"rtnCode"] intValue];
@@ -946,21 +875,16 @@
                 
                 NSString *jsonString = [model mj_JSONString];
                 result(jsonString);   // SignImgResult => JsonString
-                
             }
-            
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        
     }
     
     else if ([@"getSignImgFromService" isEqualToString:call.method]) //获取服务器的签名图片
     {
         [[AXUserInfo sharedInstance] GetCertSignAndPicOrSignWithsuccess:^(id response) {  //获取签名图片数据
-            
             if ( [[response objectForKey:@"rtnCode"] isEqualToString:@"1"]) {
-                
                 NSDictionary *dic = (NSDictionary *)response;
                 SignImgResult *model = [[SignImgResult alloc]init];
                 
@@ -970,9 +894,7 @@
                 
                 NSString *jsonString = [model mj_JSONString];
                 result(jsonString);  // SignImgResult => JsonString
-                
             }
-            
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
@@ -982,9 +904,7 @@
     {
         // NSString * stsSignImgSetting = call.arguments[@"stsSignImgSetting"];// NullAble
         [[AXUserInfo sharedInstance] GetCertSignAndPicOrSignWithsuccess:^(id response) {  //设置手写签名从服务台领取签名
-            
             if ( [[response objectForKey:@"rtnCode"] isEqualToString:@"1"]) {
-                
                 NSString *imgBase64  = [[response objectForKey:@"data"] objectForKey:@"data_base64"];
                 NSDictionary *dic = (NSDictionary *)response;
                 SignImgResult *model = [[SignImgResult alloc]init];
@@ -994,26 +914,20 @@
                 
                 NSString *jsonString = [model mj_JSONString];
                 result(jsonString);  // SignImgResult => JsonString
-                
             }
-            
         } error:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        
-        
     }
     
     else if ([@"getSignImgWithDrawingBoard" isEqualToString:call.method])    // 使用手写采集板返回 app端
     {
         // NSString * stsSignImgSetting = call.arguments[@"stsSignImgSetting"];// NullAble
-        
         [[AXUserInfo sharedInstance]ReturnSignImage:^(UIImage *Image) {
             
             NSData* data = UIImagePNGRepresentation(Image);
             NSString *imgBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
             NSString *imageStr = [self deleteSpecialCodeWithStr:imgBase64];
-            
             
             NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
             [dic setValue:imageStr forKey:@"signImg"];
@@ -1025,54 +939,32 @@
             
             NSString *jsonString = [model mj_JSONString];
             result(jsonString);  // SignImgResult => JsonString
-            
         }];
         
     }
     
     else if ([@"getFingerprintStatus" isEqualToString:call.method])  //指纹状态
     {
-        
         BOOL isBool = [AXUserInfo sharedInstance].touchBool;
         NSNumber *Bool =  [NSNumber numberWithBool:isBool];
         result(Bool);// Bool
-        
     }
     
     else if ([@"openFingerprint" isEqualToString:call.method])  //指纹开启
     {
         NSNumber * openN = call.arguments[@"open"];
         BOOL open = [openN boolValue];
-        if (open) {
-            
-            [[AXUserInfo sharedInstance]FingerprinSwtitchWithisbool:open Success:^(id response) {
-                
-                CommonResult *model = [[CommonResult alloc]init];
-                NSDictionary *dic = (NSDictionary *)response;
-                model.resultCode = [[dic objectForKey:@"rtnCode"] intValue];
-                model.resultMsg =  [dic objectForKey:@"rtnMsg"];
-                
-                NSString *jsonString = [model mj_JSONString];
-                result(jsonString); // CommonResult => JsonString
-                
-            }];
-            
-        }else{
-            
-            [[AXUserInfo sharedInstance]FingerprinSwtitchWithisbool:open Success:^(id response) {
-                
-                CommonResult *model = [[CommonResult alloc]init];
-                NSDictionary *dic = (NSDictionary *)response;
-                model.resultCode = [[dic objectForKey:@"rtnCode"] intValue];
-                model.resultMsg =  [dic objectForKey:@"rtnMsg"];
-                
-                NSString *jsonString = [model mj_JSONString];
-                result(jsonString); // CommonResult => JsonString
-                
-            }];
-            
-        }
-        
+        [[AXUserInfo sharedInstance]FingerprinSwtitchWithisbool:open Success:^(id response) {
+
+            CommonResult *model = [[CommonResult alloc]init];
+            NSDictionary *dic = (NSDictionary *)response;
+            model.resultCode = [[dic objectForKey:@"rtnCode"] intValue];
+            model.resultMsg =  [dic objectForKey:@"rtnMsg"];
+
+            NSString *jsonString = [model mj_JSONString];
+            result(jsonString); // CommonResult => JsonString
+
+        }];
     }
     else
     {
