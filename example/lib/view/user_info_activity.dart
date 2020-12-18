@@ -17,6 +17,22 @@ class _UserInfoActivityState extends State<UserInfoActivity> {
   String _phoneNum = "";
 
   @override
+  void initState() {
+    super.initState();
+    initUserInfo();
+  }
+
+  void initUserInfo() async {
+    StsUserInfo stsUserInfo = await CacheUtil.userInfo;
+    setState(() {
+
+      _idCardName = stsUserInfo?.userName ?? "";
+      _idCardNum = stsUserInfo?.cardNum ?? "";
+      _phoneNum = stsUserInfo?.phoneNum ?? "";
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     var primaryColor = Theme.of(context).primaryColor;
     var disabledColor = Theme.of(context).hintColor;
@@ -31,6 +47,15 @@ class _UserInfoActivityState extends State<UserInfoActivity> {
       onChanged: (value) {
         _idCardName = value;
       },
+      controller: TextEditingController.fromValue(
+        TextEditingValue(
+          text: _idCardName ?? "", //判断keyword是否为空
+          // 保持光标在最后
+          selection: TextSelection.fromPosition(
+            TextPosition(affinity: TextAffinity.downstream, offset: _idCardName?.length ?? 0),
+          ),
+        ),
+      ),
     );
 
     var tffIdCardNum = TextField(
@@ -42,6 +67,15 @@ class _UserInfoActivityState extends State<UserInfoActivity> {
       onChanged: (value) {
         _idCardNum = value;
       },
+      controller: TextEditingController.fromValue(
+        TextEditingValue(
+          text: _idCardNum ?? "", //判断keyword是否为空
+          // 保持光标在最后
+          selection: TextSelection.fromPosition(
+            TextPosition(affinity: TextAffinity.downstream, offset: _idCardNum?.length ?? 0),
+          ),
+        ),
+      ),
     );
 
     var tffPhoneNum = TextField(
@@ -53,6 +87,15 @@ class _UserInfoActivityState extends State<UserInfoActivity> {
       onChanged: (value) {
         _phoneNum = value;
       },
+      controller: TextEditingController.fromValue(
+        TextEditingValue(
+          text: _phoneNum ?? "", //判断keyword是否为空
+          // 保持光标在最后
+          selection: TextSelection.fromPosition(
+            TextPosition(affinity: TextAffinity.downstream, offset: _phoneNum?.length ?? 0),
+          ),
+        ),
+      ),
     );
 
     var btn = MaterialButton(
