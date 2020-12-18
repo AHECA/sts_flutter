@@ -15,10 +15,10 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		E846DCA9258AE776001B5B3E /* AXShieldBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E846DCA8258AE776001B5B3E /* AXShieldBundle.bundle */; };
 		E8C571EA258A038300BA72A4 /* com.baidu.idl.face.faceSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E8C571E6258A038300BA72A4 /* com.baidu.idl.face.faceSDK.bundle */; };
 		E8C571EC258A038300BA72A4 /* com.baidu.idl.face.model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E8C571E8258A038300BA72A4 /* com.baidu.idl.face.model.bundle */; };
 		E8C571ED258A038300BA72A4 /* idl-license.face-ios in Resources */ = {isa = PBXBuildFile; fileRef = E8C571E9258A038300BA72A4 /* idl-license.face-ios */; };
+		E8FC3611258B05CB0096E186 /* AXShieldBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E8FC3610258B05CB0096E186 /* AXShieldBundle.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,11 +52,10 @@
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A78DDE230925D214916A3310 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		DB589B9B16578E01E61E1048 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
-		E846DCA8258AE776001B5B3E /* AXShieldBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AXShieldBundle.bundle; sourceTree = "<group>"; };
 		E8C571E6258A038300BA72A4 /* com.baidu.idl.face.faceSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = com.baidu.idl.face.faceSDK.bundle; sourceTree = "<group>"; };
 		E8C571E8258A038300BA72A4 /* com.baidu.idl.face.model.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = com.baidu.idl.face.model.bundle; sourceTree = "<group>"; };
 		E8C571E9258A038300BA72A4 /* idl-license.face-ios */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "idl-license.face-ios"; sourceTree = "<group>"; };
-		E8C57244258A10C100BA72A4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		E8FC3610258B05CB0096E186 /* AXShieldBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AXShieldBundle.bundle; sourceTree = "<group>"; };
 		FF05CE8AF10E5A09EF5C6D0B /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -75,7 +74,6 @@
 		08D02BEAC177D751BC751A69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E8C57244258A10C100BA72A4 /* libc++.tbd */,
 				FF05CE8AF10E5A09EF5C6D0B /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
@@ -149,7 +147,7 @@
 		F1FD69ED25807F23007755E4 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				E846DCA8258AE776001B5B3E /* AXShieldBundle.bundle */,
+				E8FC3610258B05CB0096E186 /* AXShieldBundle.bundle */,
 				E8C571E6258A038300BA72A4 /* com.baidu.idl.face.faceSDK.bundle */,
 				E8C571E8258A038300BA72A4 /* com.baidu.idl.face.model.bundle */,
 				E8C571E9258A038300BA72A4 /* idl-license.face-ios */,
@@ -220,7 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
-				E846DCA9258AE776001B5B3E /* AXShieldBundle.bundle in Resources */,
+				E8FC3611258B05CB0096E186 /* AXShieldBundle.bundle in Resources */,
 				E8C571EC258A038300BA72A4 /* com.baidu.idl.face.model.bundle in Resources */,
 				E8C571ED258A038300BA72A4 /* idl-license.face-ios in Resources */,
 				E8C571EA258A038300BA72A4 /* com.baidu.idl.face.faceSDK.bundle in Resources */,
