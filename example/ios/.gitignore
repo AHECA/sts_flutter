@@ -10,7 +10,6 @@
 **/DerivedData/
 Icon?
 **/Pods/
-**/.symlinks/
 profile
 xcuserdata
 **/.generated/
@@ -33,3 +32,4 @@ Runner/GeneratedPluginRegistrant.*
 
 Runner/resources/idl-license.face-ios
 Flutter/.last_build_id
+.symlinks/
