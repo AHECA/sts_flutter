@@ -76,6 +76,11 @@ typedef void (^ErrorBack)(NSError *error);
 
 
 /**
+  查询指纹状态
+ */
+- (void)QueryFingerprintisStatus:(void (^)(BOOL isBool))status;
+ 
+/**
 指纹开关
 @param isbool 开关
 @param success success

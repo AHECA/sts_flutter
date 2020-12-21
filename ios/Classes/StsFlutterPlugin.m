@@ -28,7 +28,7 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-
+    
     if ([@"init" isEqualToString:call.method])  //项目配置
     {
         NSString * baseUrl = call.arguments[@"baseUrl"];
@@ -141,7 +141,7 @@
             card = SoldierIDCard;
             
         }
-
+        
         [[AXUserInfo sharedInstance]ApplyWithPersonUser_name:userName card_num:cardNum phone_num:phoneNum card_type:card user_city:userCity user_email:userEmail dept_no:departmentNo cert_ext2:certExt2 cert_ext3:certExt3 cert_ext4:certExt4 success:^(id response) {
             
             ApplyCertModel *model = [ApplyCertModel mj_objectWithKeyValues:response];
@@ -350,7 +350,7 @@
     else if ([@"scanSign" isEqualToString:call.method])    //扫码签名
     {
         // NSString * stsScanInfo = call.arguments[@"stsScanInfo"];
-
+        
         // JsonString => StsScanInfo
         result(@"");// CommonResult => JsonString
     }
@@ -381,7 +381,7 @@
                 datatype = DataBase64;
                 break;
         }
-
+        
         [[AXUserInfo sharedInstance] PassLoginMobileWithdata:data pn:pn data_type:datatype data_Format:dataFormat success:^(id response) {
             
             NSDictionary *dic = (NSDictionary *)response;
@@ -534,7 +534,7 @@
                 break;
         }
         [[AXUserInfo sharedInstance] EncryptWithdata:data data_type:datatype data_Format:dataFormat  success:^(id response) {
-
+            
             NSDictionary *dic = (NSDictionary *)response;
             CertEncryptResult *model = [[CertEncryptResult alloc]init];
             
@@ -715,7 +715,7 @@
                 modelEXT.certExt4 = @"";
                 modelEXT.certExt9 = @"";
                 modleCart.stsCertInfo.subjectEXT = modelEXT;
-
+                
                 NSString *jsonString = [modleCart mj_JSONString];
                 
                 result(jsonString);
@@ -746,7 +746,7 @@
                 modelEXT.certExt4 = @"";
                 modelEXT.certExt9 = @"";
                 modleCart.stsCertInfo.subjectEXT = modelEXT;
-
+                
                 NSString *jsonString = [modleCart mj_JSONString];
                 result(jsonString);
             }
@@ -784,7 +784,7 @@
         modelEXT.certExt4 = @"";
         modelEXT.certExt9 = @"";
         modleCart.stsCertInfo.subjectEXT = modelEXT;
-
+        
         NSString *jsonString = [modleCart mj_JSONString];
         result(jsonString);
     }
@@ -945,9 +945,10 @@
     
     else if ([@"getFingerprintStatus" isEqualToString:call.method])  //指纹状态
     {
-        BOOL isBool = [AXUserInfo sharedInstance].touchBool;
-        NSNumber *Bool =  [NSNumber numberWithBool:isBool];
-        result(Bool);// Bool
+        [[AXUserInfo sharedInstance]QueryFingerprintisStatus:^(BOOL isbool) {
+            NSLog(@"-isbool--%d",isbool);
+            result([NSNumber numberWithBool:isbool]);// Bool
+        }];
     }
     
     else if ([@"openFingerprint" isEqualToString:call.method])  //指纹开启
@@ -955,15 +956,15 @@
         NSNumber * openN = call.arguments[@"open"];
         BOOL open = [openN boolValue];
         [[AXUserInfo sharedInstance]FingerprinSwtitchWithisbool:open Success:^(id response) {
-
+            
             CommonResult *model = [[CommonResult alloc]init];
             NSDictionary *dic = (NSDictionary *)response;
             model.resultCode = [[dic objectForKey:@"rtnCode"] intValue];
             model.resultMsg =  [dic objectForKey:@"rtnMsg"];
-
+            
             NSString *jsonString = [model mj_JSONString];
             result(jsonString); // CommonResult => JsonString
-
+            
         }];
     }
     else
