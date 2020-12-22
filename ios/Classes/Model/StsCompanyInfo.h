@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)NSString  *certExt2;
 @property (nonatomic, strong)NSString  *certExt3;
 @property (nonatomic, strong)NSString  *certExt4;
+@property (nonatomic, strong)NSString  *legalperson;
+@property (nonatomic, strong)NSString  *entregisterno;
 @end
 
 NS_ASSUME_NONNULL_END

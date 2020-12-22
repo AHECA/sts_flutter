@@ -168,10 +168,68 @@
     }
     else if ([@"applyCompanyCert" isEqualToString:call.method])  //企业申请证书
     {
-        // NSString * stsCompanyInfo = call.arguments[@"stsCompanyInfo"];   // NullAble
+         NSString * stsCompanyInfo = call.arguments[@"stsCompanyInfo"];   // NullAble
+         NSDictionary *stsUserInfo_dic = [stsCompanyInfo  mj_JSONObject];
+         
+         NSString  *userName  = [stsUserInfo_dic objectForKey:@"userName"];
+         NSString  *legalperson  = [stsUserInfo_dic objectForKey:@"legal_person"];  //法人姓名
+         NSString  *entregisterno  = [stsUserInfo_dic objectForKey:@"ent_register_no"]; //统一社会代码号
+         NSString  *cardNum   = [stsUserInfo_dic objectForKey:@"cardNum"];
+         NSString  *phoneNum  = [stsUserInfo_dic objectForKey:@"phoneNum"];
+         NSString  *userEmail  = [stsUserInfo_dic objectForKey:@"userEmail"];
+         NSString  *departmentNo = [stsUserInfo_dic objectForKey:@"departmentNo"];
+         NSString  *certExt2  = [stsUserInfo_dic objectForKey:@"certExt2"];
+         NSString  *certExt3  = [stsUserInfo_dic objectForKey:@"certExt3"];
+         NSString  *certExt4  = [stsUserInfo_dic objectForKey:@"certExt4"];
+         NSString  *cardtype  = [stsUserInfo_dic objectForKey:@"cardType"];
+         
+         NSUInteger  card = 0;
+         if  ([cardtype isEqualToString:@"00"]) {
+             card = IDCard;
+             
+         }else if ([cardtype isEqualToString:@"01"]){
+             card = InterimIDCard;
+             
+         }else if ([cardtype isEqualToString:@"02"]){
+             card = HouseholdRegister;
+             
+         }else if ([cardtype isEqualToString:@"03"]){
+             card = Passport;
+             
+         }else if ([cardtype isEqualToString:@"04"]){
+             card = SoldierIDCard;
+             
+         }else if ([cardtype isEqualToString:@"05"]){
+             card = SoldierIDCard;
+             
+         }
         
-        // JsonString => StsCompanyInfo
-        result(@"");// ApplyCertResult => JsonString
+        [[AXUserInfo sharedInstance]ApplyWithENTUser_name:userName legal_person:legalperson ent_register_no:entregisterno card_num:cardNum phone_num:phoneNum user_email:userEmail dept_no:departmentNo cert_ext2:certExt2 cert_ext3:certExt3 cert_ext4:certExt4 success:^(id response) {
+            
+            ApplyCertModel *model = [ApplyCertModel mj_objectWithKeyValues:response];
+            
+            ApplyCertResult *modleCart = [[ApplyCertResult alloc]init];
+            modleCart.enCert   = model.encCert;
+            modleCart.signCert = model.signCert;
+            
+            modleCart.stsCertInfo = (id) model.signCertInfo;
+            
+            if ([model.rtnCode intValue] == 1) {
+                modleCart.resultCode  = 1;
+                modleCart.resultMsg  = [self nullToString:@"成功"];
+            }else{
+                modleCart.resultCode  = [model.rtnCode intValue];
+                modleCart.resultMsg  = [self nullToString:model.rtnMsg];
+            }
+            
+            NSString *jsonStr = [modleCart mj_JSONString];    // JsonString => StsCompanyInfo
+            result(jsonStr);  // ApplyCertResult => JsonString
+            
+        } err:^(NSError *error) {
+            NSLog(@"%@",error);
+            
+        }];
+        
     }
     
     else if ([@"getUntieEquipmentQRCode" isEqualToString:call.method])
