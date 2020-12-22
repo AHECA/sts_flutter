@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_plugin_qrcode/flutter_plugin_qrcode.dart';
 import 'package:sts_flutter/result/apply_cert_result.dart';
-import 'package:sts_flutter/result/get_department_no_result.dart';
 import 'package:sts_flutter/result/sign_img_result.dart';
 import 'package:sts_flutter/sts_code_table.dart';
 import 'package:sts_flutter/sts_flutter.dart';
@@ -13,38 +11,23 @@ import 'package:sts_flutter/model/sts_user_info.dart';
 import 'package:sts_flutter_example/app.dart';
 import 'package:sts_flutter_example/utils/cache_util.dart';
 import 'package:sts_flutter_example/utils/toast_util.dart';
-import 'package:sts_flutter_example/utils/constant_table.dart';
 import 'package:sts_flutter_example/view/main_activity.dart';
 import 'package:sts_flutter_example/view/sign_img_activity.dart';
 import 'package:sts_flutter_example/view/user_info_activity.dart';
 
 class LaunchActivity extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _LaunchState createState() => _LaunchState();
 }
 
-class _MyAppState extends State<LaunchActivity> {
+class _LaunchState extends State<LaunchActivity> {
   final List<String> names = [
     "使用证书",
     "采集长期签名图片",
     "查看长期签名图片",
     "采集临时签名图片",
     "绑定设备",
-    "下载预制证书",
-    "设置用户信息",
-    "修改服务配置",
   ];
-
-  @override
-  void initState() {
-    super.initState();
-    StsFlutter.init(ConstantTable.stsServiceURL, ConstantTable.stsAppKey, ConstantTable.stsSecretKey);
-    if (Platform.isIOS) {
-      StsFlutter.initFace(ConstantTable.Face_LicenseID_iOS, ConstantTable.Face_LicenseName_iOS);
-    } else if (Platform.isAndroid) {
-      StsFlutter.initFace(ConstantTable.Face_LicenseID_Android, ConstantTable.Face_LicenseName_Android);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,15 +117,6 @@ class _MyAppState extends State<LaunchActivity> {
         if (applyCertResult.resultCode == StsCodeTable.rtnCode_success || applyCertResult.resultCode == StsCodeTable.rtnCode_cert_exist) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => MainActivity()));
         }
-        break;
-      case 5:
-        GetDepartmentNoResult result = await StsFlutter.getDepartmentNo;
-        ToastUtil.instance.showToast(result.resultMsg);
-        break;
-      case 6:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfoActivity()));
-        break;
-      case 7:
         break;
     }
   }

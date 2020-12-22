@@ -124,24 +124,18 @@
         NSUInteger  card = 0;
         if  ([cardtype isEqualToString:@"00"]) {
             card = IDCard;
-            
         }else if ([cardtype isEqualToString:@"01"]){
             card = InterimIDCard;
-            
         }else if ([cardtype isEqualToString:@"02"]){
             card = HouseholdRegister;
-            
         }else if ([cardtype isEqualToString:@"03"]){
             card = Passport;
-            
         }else if ([cardtype isEqualToString:@"04"]){
             card = SoldierIDCard;
-            
         }else if ([cardtype isEqualToString:@"05"]){
             card = SoldierIDCard;
-            
         }
-        
+
         [[AXUserInfo sharedInstance]ApplyWithPersonUser_name:userName card_num:cardNum phone_num:phoneNum card_type:card user_city:userCity user_email:userEmail dept_no:departmentNo cert_ext2:certExt2 cert_ext3:certExt3 cert_ext4:certExt4 success:^(id response) {
             
             ApplyCertModel *model = [ApplyCertModel mj_objectWithKeyValues:response];
@@ -171,9 +165,9 @@
          NSString * stsCompanyInfo = call.arguments[@"stsCompanyInfo"];   // NullAble
          NSDictionary *stsUserInfo_dic = [stsCompanyInfo  mj_JSONObject];
          
-         NSString  *userName  = [stsUserInfo_dic objectForKey:@"userName"];
-         NSString  *legalperson  = [stsUserInfo_dic objectForKey:@"legal_person"];  //法人姓名
-         NSString  *entregisterno  = [stsUserInfo_dic objectForKey:@"ent_register_no"]; //统一社会代码号
+         NSString  *userName  = [stsUserInfo_dic objectForKey:@"companyName"];
+         NSString  *legalperson  = [stsUserInfo_dic objectForKey:@"userName"];  //法人姓名
+         NSString  *entregisterno  = [stsUserInfo_dic objectForKey:@"companyNo"]; //统一社会代码号
          NSString  *cardNum   = [stsUserInfo_dic objectForKey:@"cardNum"];
          NSString  *phoneNum  = [stsUserInfo_dic objectForKey:@"phoneNum"];
          NSString  *userEmail  = [stsUserInfo_dic objectForKey:@"userEmail"];
@@ -181,28 +175,6 @@
          NSString  *certExt2  = [stsUserInfo_dic objectForKey:@"certExt2"];
          NSString  *certExt3  = [stsUserInfo_dic objectForKey:@"certExt3"];
          NSString  *certExt4  = [stsUserInfo_dic objectForKey:@"certExt4"];
-         NSString  *cardtype  = [stsUserInfo_dic objectForKey:@"cardType"];
-         
-         NSUInteger  card = 0;
-         if  ([cardtype isEqualToString:@"00"]) {
-             card = IDCard;
-             
-         }else if ([cardtype isEqualToString:@"01"]){
-             card = InterimIDCard;
-             
-         }else if ([cardtype isEqualToString:@"02"]){
-             card = HouseholdRegister;
-             
-         }else if ([cardtype isEqualToString:@"03"]){
-             card = Passport;
-             
-         }else if ([cardtype isEqualToString:@"04"]){
-             card = SoldierIDCard;
-             
-         }else if ([cardtype isEqualToString:@"05"]){
-             card = SoldierIDCard;
-             
-         }
         
         [[AXUserInfo sharedInstance]ApplyWithENTUser_name:userName legal_person:legalperson ent_register_no:entregisterno card_num:cardNum phone_num:phoneNum user_email:userEmail dept_no:departmentNo cert_ext2:certExt2 cert_ext3:certExt3 cert_ext4:certExt4 success:^(id response) {
             
@@ -310,24 +282,18 @@
         NSUInteger  card = 0;
         if  ([cardtype isEqualToString:@"00"]) {
             card = IDCard;
-            
         }else if ([cardtype isEqualToString:@"01"]){
             card = InterimIDCard;
-            
         }else if ([cardtype isEqualToString:@"02"]){
             card = HouseholdRegister;
-            
         }else if ([cardtype isEqualToString:@"03"]){
             card = Passport;
-            
         }else if ([cardtype isEqualToString:@"04"]){
             card = SoldierIDCard;
-            
         }else if ([cardtype isEqualToString:@"05"]){
             card = SoldierIDCard;
-            
         }
-        
+
         [[AXUserInfo sharedInstance] PINRestWithuser_name:userName ent_register_no:nil card_type:card card_num:cardNum phone_num:phoneNum];
         
         CommonResult *model = [[CommonResult alloc]init];
@@ -343,34 +309,19 @@
     {
         NSString * stsCompanyInfo = call.arguments[@"stsCompanyInfo"];     // NullAble
         NSDictionary *stsUserInfo_dic = [stsCompanyInfo  mj_JSONObject];
+
+         NSString  *userName  = [stsUserInfo_dic objectForKey:@"companyName"];
+         // NSString  *legalperson  = [stsUserInfo_dic objectForKey:@"userName"];  //法人姓名
+         NSString  *entregisterno  = [stsUserInfo_dic objectForKey:@"companyNo"]; //统一社会代码号
+         NSString  *cardNum   = [stsUserInfo_dic objectForKey:@"cardNum"];
+         NSString  *phoneNum  = [stsUserInfo_dic objectForKey:@"phoneNum"];
+         // NSString  *userEmail  = [stsUserInfo_dic objectForKey:@"userEmail"];
+         // NSString  *departmentNo = [stsUserInfo_dic objectForKey:@"departmentNo"];
+         // NSString  *certExt2  = [stsUserInfo_dic objectForKey:@"certExt2"];
+         // NSString  *certExt3  = [stsUserInfo_dic objectForKey:@"certExt3"];
+         // NSString  *certExt4  = [stsUserInfo_dic objectForKey:@"certExt4"];
         
-        NSString  *userName  = [stsUserInfo_dic objectForKey:@"userName"];
-        NSString  *cardNum   = [stsUserInfo_dic objectForKey:@"cardNum"];
-        NSString  *phoneNum  = [stsUserInfo_dic objectForKey:@"phoneNum"];
-        NSString  *cardtype  = [stsUserInfo_dic objectForKey:@"cardType"];
-        
-        NSUInteger  card = 0;
-        if  ([cardtype isEqualToString:@"00"]) {
-            card = IDCard;
-            
-        }else if ([cardtype isEqualToString:@"01"]){
-            card = InterimIDCard;
-            
-        }else if ([cardtype isEqualToString:@"02"]){
-            card = HouseholdRegister;
-            
-        }else if ([cardtype isEqualToString:@"03"]){
-            card = Passport;
-            
-        }else if ([cardtype isEqualToString:@"04"]){
-            card = SoldierIDCard;
-            
-        }else if ([cardtype isEqualToString:@"05"]){
-            card = SoldierIDCard;
-            
-        }
-        
-        [[AXUserInfo sharedInstance] PINRestWithuser_name:userName ent_register_no:nil card_type:card card_num:cardNum phone_num:phoneNum];
+        [[AXUserInfo sharedInstance] PINRestWithuser_name:userName ent_register_no:entregisterno card_type:IDCard card_num:cardNum phone_num:phoneNum];
         
         CommonResult *model = [[CommonResult alloc]init];
         model.resultCode = 1;

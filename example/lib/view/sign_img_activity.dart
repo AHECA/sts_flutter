@@ -9,10 +9,10 @@ class SignImgActivity extends StatefulWidget {
   SignImgActivity({@required this.img});
 
   @override
-  _SignImgActivityState createState() => _SignImgActivityState();
+  _SignImgState createState() => _SignImgState();
 }
 
-class _SignImgActivityState extends State<SignImgActivity> {
+class _SignImgState extends State<SignImgActivity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

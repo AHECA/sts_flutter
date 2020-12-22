@@ -8,10 +8,10 @@ import 'package:sts_flutter_example/utils/toast_util.dart';
 
 class UserInfoActivity extends StatefulWidget {
   @override
-  _UserInfoActivityState createState() => _UserInfoActivityState();
+  _UserInfoState createState() => _UserInfoState();
 }
 
-class _UserInfoActivityState extends State<UserInfoActivity> {
+class _UserInfoState extends State<UserInfoActivity> {
   String _idCardName = "";
   String _idCardNum = "";
   String _phoneNum = "";

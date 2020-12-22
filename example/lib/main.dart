@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sts_flutter_example/view/launch_activity.dart';
+import 'package:sts_flutter_example/view/choice_cert_type_activity.dart';
 
 void main() {
   runApp(MaterialApp(
     title: "手机盾示例",
-    home: LaunchActivity(),
+    home: ChoiceCertTypeActivity(),
     theme: ThemeData(
       primaryColor: Color(0xFF3388FF),
       primaryColorDark: Color(0xFF1162D3),

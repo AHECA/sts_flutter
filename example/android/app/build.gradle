@@ -29,6 +29,15 @@ android {
     compileSdkVersion 30
     buildToolsVersion '30.0.2'
 
+    signingConfigs {
+        config {
+            storeFile file(localProperties.getProperty('storeFile'))
+            storePassword localProperties.getProperty('storePassword')
+            keyAlias localProperties.getProperty('keyAlias')
+            keyPassword localProperties.getProperty('keyPassword')
+        }
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -38,7 +47,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.ahca.sts.example"
+        applicationId "com.ahca.sts.flutter.demo"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
@@ -47,7 +56,10 @@ android {
 
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
         }
     }
     compileOptions {
@@ -61,5 +73,6 @@ flutter {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
