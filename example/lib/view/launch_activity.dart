@@ -4,16 +4,14 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_plugin_qrcode/flutter_plugin_qrcode.dart';
 import 'package:sts_flutter/result/apply_cert_result.dart';
+import 'package:sts_flutter/result/get_cert_result.dart';
 import 'package:sts_flutter/result/sign_img_result.dart';
 import 'package:sts_flutter/sts_code_table.dart';
 import 'package:sts_flutter/sts_flutter.dart';
-import 'package:sts_flutter/model/sts_user_info.dart';
 import 'package:sts_flutter_example/app.dart';
-import 'package:sts_flutter_example/utils/cache_util.dart';
 import 'package:sts_flutter_example/utils/toast_util.dart';
 import 'package:sts_flutter_example/view/main_activity.dart';
 import 'package:sts_flutter_example/view/sign_img_activity.dart';
-import 'package:sts_flutter_example/view/user_info_activity.dart';
 
 class LaunchActivity extends StatefulWidget {
   @override
@@ -70,21 +68,11 @@ class _LaunchState extends State<LaunchActivity> {
   }
 
   void changePage(int position) async {
-    StsUserInfo stsUserInfo = await CacheUtil.userInfo;
-    if (stsUserInfo == null) {
-      var result = await Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfoActivity()));
-      if (result != null) {
-        stsUserInfo = result["stsUserInfo"];
-      } else {
-        return;
-      }
-    }
-    StsFlutter.initUseId(stsUserInfo.phoneNum);
     switch (position) {
       case 0:
-        ApplyCertResult applyCertResult = await StsFlutter.applyPersonalCert(stsUserInfo);
-        ToastUtil.instance.showToast(applyCertResult.resultMsg);
-        if (applyCertResult.resultCode == StsCodeTable.rtnCode_success || applyCertResult.resultCode == StsCodeTable.rtnCode_cert_exist) {
+        GetCertResult getCertResult = await StsFlutter.getCert(StsFlutter.CERT_TYPE_SIGNCERT);
+        ToastUtil.instance.showToast(getCertResult.resultMsg);
+        if (getCertResult.resultCode == StsCodeTable.rtnCode_success || getCertResult.resultCode == StsCodeTable.rtnCode_cert_exist) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => MainActivity()));
         }
         break;
