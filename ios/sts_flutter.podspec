@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'sts_flutter'
-  s.version          = '0.0.1'
+  s.version          = '0.0.18'
   s.summary          = 'AHCA STS Flutter plugin.'
   s.description      = <<-DESC
 AHCA STS Flutter plugin.

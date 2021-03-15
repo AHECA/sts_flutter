@@ -76,12 +76,19 @@ typedef void (^ErrorBack)(NSError *error);
 
 
 /**
+  查询指纹状态.在iOS 7.0中弃用
+ */
+- (void)QueryFingerprintisStatus:(void (^)(BOOL isBool))status NS_DEPRECATED_IOS(2_0, 7_0, "Use -QueryWhetherFingerprintOnStatus:") __TVOS_PROHIBITED;
+/**
   查询指纹状态
  */
-- (void)QueryFingerprintisStatus:(void (^)(BOOL isBool))status;
+- (void)QueryWhetherFingerprintOnStatus:(void (^)(BOOL isBool))status;
+
+
+
  
 /**
-指纹开关
+生物识别开关
 @param isbool 开关
 @param success success
 
@@ -384,7 +391,7 @@ typedef void (^ErrorBack)(NSError *error);
 
 
 /**
- 签章
+ 证书签章
  @param pn 项目编号
  @param success success
  @param err err
@@ -408,7 +415,28 @@ typedef void (^ErrorBack)(NSError *error);
                                 error:(ErrorBack)err;
 
 
+/**
+签章数据删除
+@param type 类型数据
+@param success success
+@param err err
+*/
+-(void)SealStorageConformGetByIDWithpn:(NSString *)pn
+                                  Type:(NSString *)type
+                               success:(CallBack)success
+                                 error:(ErrorBack)err;
 
+
+/**
+签章数据获取
+@param pn 项目编号
+@param success success
+@param err err
+*/
+-(void)GetpassCertSealAndPicOrSignWithpn:(NSString *)pn
+                                 success:(CallBack)success
+                                   error:(ErrorBack)err;
+  
 
 /**
  获取解绑二维码
@@ -435,7 +463,7 @@ typedef void (^ErrorBack)(NSError *error);
 
 /**
  
- 签名面板（设置后存储到服务器）
+ 手写面板签名面板（设置后存储到服务器）
  @param success success
  @param err err
  
@@ -471,12 +499,10 @@ typedef void (^ErrorBack)(NSError *error);
 /**
  签名数据删除
  @param type 类型数据
- @param data_id 数据ID
  @param success success
  @param err err
  */
 -(void)ConformGetByIDWithType:(NSString *)type
-                      data_id:(NSString *)data_id
                       success:(CallBack)success
                         error:(ErrorBack)err;
   
@@ -494,7 +520,7 @@ typedef void (^ErrorBack)(NSError *error);
                            error:(ErrorBack)err;
 
 /**
- 扫码签名
+ 扫码签名 (指定用户)
  @param success success
  @param err err
 
@@ -502,6 +528,18 @@ typedef void (^ErrorBack)(NSError *error);
 -(void)passQRCodeSignWtihQCCode:(NSString *)QCCodeString
                         success:(CallBack)success
                           error:(ErrorBack)err;
+
+
+/**
+扫码签名（上级医师）
+@param success success
+@param err err
+
+*/
+-(void)SuperiorPassQRCodeSignWtihQCCode:(NSString *)QCCodeString
+                                success:(CallBack)success
+                                  error:(ErrorBack)err;
+
 
 
 /**
