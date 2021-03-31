@@ -44,6 +44,9 @@
 #import <AnXinSDK/SubjectDNBean.h>
 #import <AnXinSDK/SubjectEXTBean.h>
 */
+
+
+
 //! Project version number for AnXinSDK.
 FOUNDATION_EXPORT double AnXinSDKVersionNumber;
 

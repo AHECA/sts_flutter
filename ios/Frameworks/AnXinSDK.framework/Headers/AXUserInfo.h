@@ -559,6 +559,25 @@ typedef void (^ErrorBack)(NSError *error);
 - (void)GetAdvanceDownloadCertificatewhitdeptNo:(NSString *)deptNo
                                         Success:(CallBack)success;
 
+/**
+  主题皮肤颜色将十六进制的rgb颜色值转换为（0x或#开头）字符串对象
+  @param DarkColorValue  主题浅色
+  @param lightColorValue 主题暗色
+ */
+-(void)ShowStyleSkinWithThemeBackDarkColorValue:(NSString *)DarkColorValue
+                                lightColorValue:(NSString *)lightColorValue;
 
+/**
+ SDK内部暗黑模式是否开启状态
+ @param status  YES/NO
+ */
+- (void)RefreshDiabloModeSwitchWithstatus:(void (^)(BOOL isBool))status;
+
+/**
+ 开关事件响应
+ @param isBool  YES/NO
+ @param success success
+ */
+- (void)DiabloModeSwitchChangeWithstatus:(BOOL )isBool success:(void(^)(id response))success;
 @end
 
